@@ -7,10 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --bg:#F8F8F3;--text:#68635D;--accent:#A7B4C2;
-  --muted:#AEACA6;--border:#D4D3C6;--dark:#595C64;--white:#fff;
-}
+:root{--bg:#F8F8F3;--text:#68635D;--accent:#A7B4C2;--muted:#AEACA6;--border:#D4D3C6;--dark:#595C64;--white:#fff;}
 body{background:var(--bg);color:var(--text);font-family:'Raleway',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;}
 a{color:inherit;text-decoration:none;}
 .page{max-width:880px;margin:0 auto;padding:40px 24px 80px;}
@@ -34,10 +31,7 @@ a{color:inherit;text-decoration:none;}
 .legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px;align-items:center;}
 .leg{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--muted);}
 .dot{width:7px;height:7px;border-radius:50%;display:inline-block;flex-shrink:0;}
-.dot-nh{background:var(--border);}
-.dot-h{background:var(--accent);}
-.dot-rh{background:var(--muted);}
-.dot-ir{background:#C4A882;}
+.dot-nh{background:var(--border);}.dot-h{background:var(--accent);}.dot-rh{background:var(--muted);}.dot-ir{background:#C4A882;}
 .badge{font-size:9px;letter-spacing:1px;padding:2px 7px;border-radius:20px;border:0.5px solid var(--border);color:var(--muted);}
 .badge-jp{border-color:var(--accent);color:var(--accent);}
 .era-block{margin-bottom:36px;}
@@ -104,9 +98,13 @@ td.note-cell{font-size:10px;color:var(--muted);font-style:italic;white-space:nor
   </div>
 </div>
 <script>
-const PROXY = 'https://api.allorigins.win/raw?url=';
-const CARDS_CSV = PROXY + encodeURIComponent('https://docs.google.com/spreadsheets/d/e/2PACX-1vSXZ1GQgzsYD7_FLNTIw9IhCPcY8kPaIQghGxyRAxfBYFJBlq9wTEUBeteQ65HPlQ/pub?gid=316843338&single=true&output=csv');
-const CAMEO_CSV = PROXY + encodeURIComponent('https://docs.google.com/spreadsheets/d/e/2PACX-1vSXZ1GQgzsYD7_FLNTIw9IhCPcY8kPaIQghGxyRAxfBYFJBlq9wTEUBeteQ65HPlQ/pub?gid=2054673248&single=true&output=csv');
+const CARDS_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSXZ1GQgzsYD7_FLNTIw9IhCPcY8kPaIQghGxyRAxfBYFJBlq9wTEUBeteQ65HPlQ/pub?gid=316843338&single=true&output=csv';
+const CAMEO_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSXZ1GQgzsYD7_FLNTIw9IhCPcY8kPaIQghGxyRAxfBYFJBlq9wTEUBeteQ65HPlQ/pub?gid=2054673248&single=true&output=csv';
+const PROXIES = [
+  url => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url),
+  url => 'https://corsproxy.io/?' + encodeURIComponent(url),
+  url => 'https://thingproxy.freeboard.io/fetch/' + url,
+];
 let allCards=[];
 let allCameo=[];
 function parseCSV(text){
@@ -175,11 +173,22 @@ function render(){
   if(!html)html=`<div class="no-results">no cards match your search.</div>`;
   document.getElementById('output').innerHTML=html;
 }
-async function fetchCSV(url){const res=await fetch(url);if(!res.ok)throw new Error(`HTTP ${res.status}`);return parseCSV(await res.text());}
+async function fetchWithFallback(rawUrl){
+  for(const proxy of PROXIES){
+    try{
+      const res=await fetch(proxy(rawUrl));
+      if(res.ok){
+        const text=await res.text();
+        if(text&&text.includes(','))return parseCSV(text);
+      }
+    }catch(e){continue;}
+  }
+  throw new Error('All proxies failed for: '+rawUrl);
+}
 async function init(){
   try{
     document.getElementById('output').innerHTML='<div class="loading">loading your card list…</div>';
-    const [cards,cameo]=await Promise.all([fetchCSV(CARDS_CSV),fetchCSV(CAMEO_CSV)]);
+    const [cards,cameo]=await Promise.all([fetchWithFallback(CARDS_URL),fetchWithFallback(CAMEO_URL)]);
     allCards=cards;allCameo=cameo;
     populateFilters();render();
   }catch(e){

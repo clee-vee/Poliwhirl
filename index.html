@@ -65,7 +65,7 @@ td.note-cell{font-size:10px;color:var(--muted);font-style:italic;white-space:nor
     <div class="tagline">A complete reference for every Poliwhirl Pokémon TCG card —<br>updated as new sets release.</div>
   </div>
   <div class="divider"></div>
-  <div class="stats" id="stats"><div class="loading">loading…</div></div>
+  <div class="stats" id="stats"></div>
   <div class="divider"></div>
   <div class="controls">
     <input type="text" id="search" placeholder="search by name or set…" oninput="render()">
@@ -90,7 +90,7 @@ td.note-cell{font-size:10px;color:var(--muted);font-style:italic;white-space:nor
     <div class="leg"><span class="dot dot-ir"></span>illustration rare</div>
     <div class="leg"><span class="badge badge-jp">JP</span>japanese exclusive</div>
   </div>
-  <div id="output"><div class="loading">loading your card list…</div></div>
+  <div id="output"></div>
   <div class="footer">
     <p>collecting, softly &nbsp;·&nbsp; a quiet space for pokémon card collecting<br>
     where opening a pack is a ritual, not a race.<br>
@@ -98,33 +98,55 @@ td.note-cell{font-size:10px;color:var(--muted);font-style:italic;white-space:nor
   </div>
 </div>
 <script>
-const CARDS_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSXZ1GQgzsYD7_FLNTIw9IhCPcY8kPaIQghGxyRAxfBYFJBlq9wTEUBeteQ65HPlQ/pub?gid=316843338&single=true&output=csv';
-const CAMEO_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSXZ1GQgzsYD7_FLNTIw9IhCPcY8kPaIQghGxyRAxfBYFJBlq9wTEUBeteQ65HPlQ/pub?gid=2054673248&single=true&output=csv';
-const PROXIES = [
-  url => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url),
-  url => 'https://corsproxy.io/?' + encodeURIComponent(url),
-  url => 'https://thingproxy.freeboard.io/fetch/' + url,
+const CARDS = [
+  {name:"Poliwhirl",set:"Base Set",year:"1999",number:"38/102",variant:"Non-Holo",lang:"EN",era:"Classic era · 1999–2003",note:""},
+  {name:"Misty's Poliwhirl",set:"Gym Heroes",year:"2000",number:"53/132",variant:"Non-Holo",lang:"EN",era:"Classic era · 1999–2003",note:""},
+  {name:"Poliwhirl",set:"Neo Discovery",year:"2001",number:"44/75",variant:"Non-Holo",lang:"EN",era:"Classic era · 1999–2003",note:""},
+  {name:"Poliwhirl",set:"Vending Machine Set 1",year:"2001",number:"—",variant:"Non-Holo",lang:"JP",era:"Classic era · 1999–2003",note:"Japanese exclusive"},
+  {name:"Poliwhirl",set:"Expedition Base Set",year:"2002",number:"89/165",variant:"Non-Holo",lang:"EN",era:"Classic era · 1999–2003",note:"e-Card era"},
+  {name:"Poliwhirl",set:"Expedition Base Set",year:"2002",number:"89/165",variant:"Reverse Holo",lang:"EN",era:"Classic era · 1999–2003",note:"e-Card era"},
+  {name:"Poliwhirl",set:"Skyridge",year:"2003",number:"88/144",variant:"Non-Holo",lang:"EN",era:"Classic era · 1999–2003",note:"e-Card era"},
+  {name:"Poliwhirl",set:"Skyridge",year:"2003",number:"88/144",variant:"Reverse Holo",lang:"EN",era:"Classic era · 1999–2003",note:"e-Card era"},
+  {name:"Poliwhirl",set:"EX FireRed & LeafGreen",year:"2004",number:"46/112",variant:"Non-Holo",lang:"EN",era:"EX era · 2003–2007",note:""},
+  {name:"Poliwhirl",set:"EX FireRed & LeafGreen",year:"2004",number:"46/112",variant:"Reverse Holo",lang:"EN",era:"EX era · 2003–2007",note:""},
+  {name:"Poliwhirl",set:"EX Unseen Forces",year:"2005",number:"68/115",variant:"Non-Holo",lang:"EN",era:"EX era · 2003–2007",note:""},
+  {name:"Poliwhirl",set:"EX Unseen Forces",year:"2005",number:"68/115",variant:"Reverse Holo",lang:"EN",era:"EX era · 2003–2007",note:""},
+  {name:"Poliwhirl",set:"Legends Awakened",year:"2008",number:"115/146",variant:"Non-Holo",lang:"EN",era:"Diamond & Pearl era · 2007–2011",note:""},
+  {name:"Poliwhirl",set:"Legends Awakened",year:"2008",number:"115/146",variant:"Reverse Holo",lang:"EN",era:"Diamond & Pearl era · 2007–2011",note:""},
+  {name:"Poliwhirl",set:"HS Unleashed",year:"2010",number:"37/95",variant:"Non-Holo",lang:"EN",era:"Diamond & Pearl era · 2007–2011",note:"HeartGold & SoulSilver era"},
+  {name:"Poliwhirl",set:"HS Unleashed",year:"2010",number:"37/95",variant:"Reverse Holo",lang:"EN",era:"Diamond & Pearl era · 2007–2011",note:"HeartGold & SoulSilver era"},
+  {name:"Poliwhirl",set:"XY Furious Fists",year:"2014",number:"16/111",variant:"Non-Holo",lang:"EN",era:"XY era · 2013–2016",note:""},
+  {name:"Poliwhirl",set:"XY Furious Fists",year:"2014",number:"16/111",variant:"Reverse Holo",lang:"EN",era:"XY era · 2013–2016",note:""},
+  {name:"Poliwhirl",set:"XY Evolutions",year:"2016",number:"24/108",variant:"Non-Holo",lang:"EN",era:"XY era · 2013–2016",note:"Base Set artwork callback"},
+  {name:"Poliwhirl",set:"XY Evolutions",year:"2016",number:"24/108",variant:"Reverse Holo",lang:"EN",era:"XY era · 2013–2016",note:"Base Set artwork callback"},
+  {name:"Poliwhirl",set:"Sun & Moon Base Set",year:"2017",number:"31/149",variant:"Non-Holo",lang:"EN",era:"Sun & Moon era · 2017–2019",note:""},
+  {name:"Poliwhirl",set:"Sun & Moon Base Set",year:"2017",number:"31/149",variant:"Reverse Holo",lang:"EN",era:"Sun & Moon era · 2017–2019",note:""},
+  {name:"Poliwhirl",set:"Unbroken Bonds",year:"2019",number:"38/214",variant:"Non-Holo",lang:"EN",era:"Sun & Moon era · 2017–2019",note:""},
+  {name:"Poliwhirl",set:"Unbroken Bonds",year:"2019",number:"38/214",variant:"Reverse Holo",lang:"EN",era:"Sun & Moon era · 2017–2019",note:""},
+  {name:"Poliwhirl",set:"Lost Origin",year:"2022",number:"31/196",variant:"Non-Holo",lang:"EN",era:"Sword & Shield era · 2020–2022",note:""},
+  {name:"Poliwhirl",set:"Lost Origin",year:"2022",number:"31/196",variant:"Reverse Holo",lang:"EN",era:"Sword & Shield era · 2020–2022",note:""},
+  {name:"Poliwhirl",set:"Scarlet & Violet 151",year:"2023",number:"61/165",variant:"Non-Holo",lang:"EN",era:"Scarlet & Violet era · 2023–present",note:""},
+  {name:"Poliwhirl",set:"Scarlet & Violet 151",year:"2023",number:"61/165",variant:"Reverse Holo",lang:"EN",era:"Scarlet & Violet era · 2023–present",note:""},
+  {name:"Poliwhirl",set:"Scarlet & Violet 151",year:"2023",number:"176/165",variant:"Illustration Rare",lang:"EN",era:"Scarlet & Violet era · 2023–present",note:"fan favourite"},
+  {name:"Poliwhirl",set:"Twilight Masquerade",year:"2024",number:"42/167",variant:"Non-Holo",lang:"EN",era:"Scarlet & Violet era · 2023–present",note:""},
+  {name:"Poliwhirl",set:"Twilight Masquerade",year:"2024",number:"42/167",variant:"Reverse Holo",lang:"EN",era:"Scarlet & Violet era · 2023–present",note:""},
 ];
-let allCards=[];
-let allCameo=[];
-function parseCSV(text){
-  const lines=text.trim().split('\n');
-  const headers=lines[0].split(',').map(h=>h.trim().replace(/^"|"$/g,'').toLowerCase());
-  return lines.slice(1).map(line=>{
-    const vals=[];let cur='',inQ=false;
-    for(let ch of line){if(ch==='"'){inQ=!inQ;}else if(ch===','&&!inQ){vals.push(cur.trim());cur='';}else cur+=ch;}
-    vals.push(cur.trim());
-    const obj={};
-    headers.forEach((h,i)=>obj[h]=(vals[i]||'').replace(/^"|"$/g,'').trim());
-    return obj;
-  }).filter(r=>Object.values(r).some(v=>v));
-}
+const CAMEO = [
+  {name:"Magikarp",set:"Expedition",year:"2002",number:"118",lang:"EN",cameo_detail:"featured in artwork"},
+  {name:"Fisherman",set:"Skyridge",year:"2003",number:"125",lang:"EN",cameo_detail:"featured in artwork"},
+  {name:"Trade Please!",set:"XY-P Promos",year:"2016",number:"282",lang:"JP",cameo_detail:"featured in artwork"},
+  {name:"Sabrina's ESP",set:"Gym Heroes",year:"2000",number:"117",lang:"EN",cameo_detail:"appears on plushie"},
+  {name:"Quaxwell",set:"Paldea Evolved",year:"2023",number:"207",lang:"EN",cameo_detail:"appears on bottle"},
+  {name:"Team Rocket's Wobbuffet",set:"SV Promos",year:"2023",number:"203",lang:"JP",cameo_detail:"appears on can"},
+  {name:"Firefighter Pikachu",set:"SM-P Promos",year:"2018",number:"209",lang:"JP",cameo_detail:"appears on matoi"},
+];
+let allCards=CARDS, allCameo=CAMEO;
 function variantDot(v){const vl=(v||'').toLowerCase();if(vl.includes('illustration'))return 'dot-ir';if(vl.includes('reverse'))return 'dot-rh';if(vl==='holo')return 'dot-h';return 'dot-nh';}
 function langBadge(l){const jp=(l||'').toUpperCase()==='JP';return `<span class="badge${jp?' badge-jp':''}">${(l||'EN').toUpperCase()}</span>`;}
 function variantPill(v){return `<span class="vpill"><span class="dot ${variantDot(v)}"></span>${v||'—'}</span>`;}
 function groupBy(arr,key){const map=new Map();arr.forEach(r=>{const k=r[key]||'Other';if(!map.has(k))map.set(k,[]);map.get(k).push(r);});return map;}
 function populateFilters(){
-  const eras=[...new Set([...allCards,...allCameo].map(r=>r.era).filter(Boolean))];
+  const eras=[...new Set(allCards.map(r=>r.era).filter(Boolean))];
   const variants=[...new Set(allCards.map(r=>r.variant).filter(Boolean))];
   const fEra=document.getElementById('fEra');
   const fVar=document.getElementById('fVariant');
@@ -144,7 +166,7 @@ function render(){
   if(fSec===''||fSec==='main'){
     let rows=allCards.filter(r=>{
       if(fEra&&r.era!==fEra)return false;
-      if(fLang&&(r.lang||'EN').toUpperCase()!==fLang.toUpperCase())return false;
+      if(fLang&&(r.lang||'').toUpperCase()!==fLang.toUpperCase())return false;
       if(fVar&&r.variant!==fVar)return false;
       if(q&&!r.name?.toLowerCase().includes(q)&&!r.set?.toLowerCase().includes(q))return false;
       return true;
@@ -160,43 +182,21 @@ function render(){
   }
   if(fSec===''||fSec==='cameo'){
     let rows=allCameo.filter(r=>{
-      if(fLang&&(r.lang||'EN').toUpperCase()!==fLang.toUpperCase())return false;
+      if(fLang&&(r.lang||'').toUpperCase()!==fLang.toUpperCase())return false;
       if(q&&!r.name?.toLowerCase().includes(q)&&!r.set?.toLowerCase().includes(q))return false;
       return true;
     });
     if(rows.length){
       html+=`<div class="era-block"><div class="era-label">cameo appearances</div><div class="tbl-wrap"><table><thead><tr><th style="width:26%">card name</th><th style="width:24%">set</th><th style="width:9%" class="col-num">number</th><th style="width:6%">lang</th><th>poliwhirl appears on</th></tr></thead><tbody>`;
-      rows.forEach(c=>{html+=`<tr><td class="nm">${c.name||'—'}</td><td>${c.set||'—'}<span class="yr">${c.year||''}</span></td><td class="col-num" style="font-size:11px;">${c.number||'—'}</td><td>${langBadge(c.lang)}</td><td class="note-cell">${c.cameo_detail||c.note||'—'}</td></tr>`;});
+      rows.forEach(c=>{html+=`<tr><td class="nm">${c.name||'—'}</td><td>${c.set||'—'}<span class="yr">${c.year||''}</span></td><td class="col-num" style="font-size:11px;">${c.number||'—'}</td><td>${langBadge(c.lang)}</td><td class="note-cell">${c.cameo_detail||'—'}</td></tr>`;});
       html+=`</tbody></table></div></div>`;
     }
   }
   if(!html)html=`<div class="no-results">no cards match your search.</div>`;
   document.getElementById('output').innerHTML=html;
 }
-async function fetchWithFallback(rawUrl){
-  for(const proxy of PROXIES){
-    try{
-      const res=await fetch(proxy(rawUrl));
-      if(res.ok){
-        const text=await res.text();
-        if(text&&text.includes(','))return parseCSV(text);
-      }
-    }catch(e){continue;}
-  }
-  throw new Error('All proxies failed for: '+rawUrl);
-}
-async function init(){
-  try{
-    document.getElementById('output').innerHTML='<div class="loading">loading your card list…</div>';
-    const [cards,cameo]=await Promise.all([fetchWithFallback(CARDS_URL),fetchWithFallback(CAMEO_URL)]);
-    allCards=cards;allCameo=cameo;
-    populateFilters();render();
-  }catch(e){
-    document.getElementById('output').innerHTML=`<div class="no-results">couldn't load the card list right now — please try refreshing.</div>`;
-    console.error(e);
-  }
-}
-init();
+populateFilters();
+render();
 </script>
 </body>
 </html>

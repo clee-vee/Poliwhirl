@@ -13,44 +13,24 @@
 }
 body{background:var(--bg);color:var(--text);font-family:'Raleway',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;}
 a{color:inherit;text-decoration:none;}
-
 .page{max-width:880px;margin:0 auto;padding:40px 24px 80px;}
-
-/* ── header ── */
 .header{text-align:center;padding:36px 0 28px;}
 .title{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:400;line-height:1.1;color:var(--text);}
 .title em{font-style:italic;}
 .handle{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:10px;}
 .tagline{font-size:12px;font-weight:300;color:var(--muted);margin-top:10px;line-height:1.8;}
 .divider{height:0.5px;background:var(--border);margin:24px 0;}
-
-/* ── stats ── */
 .stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:24px 0 32px;}
 .stat{background:var(--white);border:0.5px solid var(--border);border-radius:8px;padding:12px 22px;text-align:center;min-width:90px;}
 .stat-n{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--text);line-height:1;}
 .stat-l{font-size:8px;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);margin-top:4px;}
-
-/* ── controls ── */
 .controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;align-items:center;}
-.controls input,
-.controls select{
-  height:36px;border:0.5px solid var(--border);border-radius:6px;
-  background:var(--white);color:var(--text);
-  font-family:'Raleway',sans-serif;font-size:12px;font-weight:300;
-  padding:0 12px;outline:none;
-}
+.controls input,.controls select{height:36px;border:0.5px solid var(--border);border-radius:6px;background:var(--white);color:var(--text);font-family:'Raleway',sans-serif;font-size:12px;font-weight:300;padding:0 12px;outline:none;}
 .controls input{flex:1;min-width:180px;}
 .controls input::placeholder{color:var(--muted);}
 .controls select{cursor:pointer;}
-.btn{
-  height:36px;padding:0 16px;border:0.5px solid var(--border);border-radius:6px;
-  background:var(--white);color:var(--text);
-  font-family:'Raleway',sans-serif;font-size:11px;font-weight:400;
-  cursor:pointer;letter-spacing:0.5px;white-space:nowrap;
-}
+.btn{height:36px;padding:0 16px;border:0.5px solid var(--border);border-radius:6px;background:var(--white);color:var(--text);font-family:'Raleway',sans-serif;font-size:11px;font-weight:400;cursor:pointer;letter-spacing:0.5px;white-space:nowrap;}
 .btn:hover{background:var(--bg);}
-
-/* ── legend ── */
 .legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px;align-items:center;}
 .leg{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--muted);}
 .dot{width:7px;height:7px;border-radius:50%;display:inline-block;flex-shrink:0;}
@@ -60,283 +40,15 @@ a{color:inherit;text-decoration:none;}
 .dot-ir{background:#C4A882;}
 .badge{font-size:9px;letter-spacing:1px;padding:2px 7px;border-radius:20px;border:0.5px solid var(--border);color:var(--muted);}
 .badge-jp{border-color:var(--accent);color:var(--accent);}
-
-/* ── era blocks ── */
 .era-block{margin-bottom:36px;}
 .era-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
 .era-label::after{content:'';flex:1;height:0.5px;background:var(--border);}
-
-/* ── table ── */
 .tbl-wrap{border:0.5px solid var(--border);border-radius:8px;overflow:hidden;}
 table{width:100%;border-collapse:collapse;table-layout:fixed;}
-thead th{
-  font-size:8px;letter-spacing:1.8px;text-transform:uppercase;
-  color:var(--muted);font-weight:400;
-  padding:8px 12px;text-align:left;
-  background:var(--bg);
-  border-bottom:0.5px solid var(--border);
-}
+thead th{font-size:8px;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);font-weight:400;padding:8px 12px;text-align:left;background:var(--bg);border-bottom:0.5px solid var(--border);}
 tbody tr{border-bottom:0.5px solid var(--border);}
 tbody tr:last-child{border-bottom:none;}
 tbody tr:hover{background:rgba(167,180,194,0.06);}
 td{padding:10px 12px;font-size:12px;font-weight:300;color:var(--text);vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 td.nm{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;white-space:normal;}
-td.note-cell{font-size:10px;color:var(--muted);font-style:italic;white-space:normal;}
-.yr{color:var(--muted);font-size:10px;margin-left:4px;}
-
-/* ── variant pill ── */
-.vpill{display:inline-flex;align-items:center;gap:4px;font-size:9px;padding:2px 8px;border-radius:20px;border:0.5px solid var(--border);color:var(--muted);white-space:nowrap;}
-.vpill .dot{width:5px;height:5px;}
-
-/* ── loading / error ── */
-.loading{text-align:center;padding:60px;color:var(--muted);font-size:13px;}
-.no-results{text-align:center;padding:40px;color:var(--muted);font-size:13px;}
-
-/* ── footer ── */
-.footer{text-align:center;margin-top:56px;padding-top:24px;border-top:0.5px solid var(--border);}
-.footer p{font-size:10px;color:var(--muted);font-weight:300;line-height:2.2;letter-spacing:0.3px;}
-
-/* ── responsive ── */
-@media(max-width:600px){
-  .title{font-size:28px;}
-  .col-num,.col-era{display:none;}
-  td,th{padding:8px 8px;}
-}
-
-@media print{
-  .controls,.legend,.btn{display:none!important;}
-  .page{padding:0;}
-  .era-block{break-inside:avoid;}
-  body{background:white;}
-}
-</style>
-</head>
-<body>
-<div class="page">
-
-  <div class="header">
-    <div class="title">collecting, <em>softly</em></div>
-    <div class="handle">@collectingsoftly &nbsp;·&nbsp; pokémon &nbsp;·&nbsp; slow living</div>
-    <div class="tagline">A complete reference for every Poliwhirl Pokémon TCG card —<br>updated as new sets release.</div>
-  </div>
-
-  <div class="divider"></div>
-  <div class="stats" id="stats"><div class="loading">loading…</div></div>
-  <div class="divider"></div>
-
-  <div class="controls">
-    <input type="text" id="search" placeholder="search by name or set…" oninput="render()">
-    <select id="fEra" onchange="render()"><option value="">all eras</option></select>
-    <select id="fLang" onchange="render()">
-      <option value="">all languages</option>
-      <option value="EN">english</option>
-      <option value="JP">japanese</option>
-    </select>
-    <select id="fVariant" onchange="render()"><option value="">all variants</option></select>
-    <select id="fSection" onchange="render()">
-      <option value="">main cards + cameos</option>
-      <option value="main">main cards only</option>
-      <option value="cameo">cameo appearances only</option>
-    </select>
-    <button class="btn" onclick="window.print()">print · save PDF</button>
-  </div>
-
-  <div class="legend">
-    <div class="leg"><span class="dot dot-nh"></span>non-holo</div>
-    <div class="leg"><span class="dot dot-h"></span>holo</div>
-    <div class="leg"><span class="dot dot-rh"></span>reverse holo</div>
-    <div class="leg"><span class="dot dot-ir"></span>illustration rare</div>
-    <div class="leg"><span class="badge badge-jp">JP</span>japanese exclusive</div>
-  </div>
-
-  <div id="output"><div class="loading">loading your card list…</div></div>
-
-  <div class="footer">
-    <p>collecting, softly &nbsp;·&nbsp; a quiet space for pokémon card collecting<br>
-    where opening a pack is a ritual, not a race.<br>
-    <span style="letter-spacing:2px;font-size:9px;">@collectingsoftly</span></p>
-  </div>
-
-</div>
-
-<script>
-const CARDS_CSV  = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSXZ1GQgzsYD7_FLNTIw9IhCPcY8kPaIQghGxyRAxfBYFJBlq9wTEUBeteQ65HPlQ/pub?gid=316843338&single=true&output=csv';
-const CAMEO_CSV  = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSXZ1GQgzsYD7_FLNTIw9IhCPcY8kPaIQghGxyRAxfBYFJBlq9wTEUBeteQ65HPlQ/pub?gid=2054673248&single=true&output=csv';
-
-let allCards = [];
-let allCameo = [];
-
-function parseCSV(text){
-  const lines = text.trim().split('\n');
-  const headers = lines[0].split(',').map(h=>h.trim().replace(/^"|"$/g,'').toLowerCase());
-  return lines.slice(1).map(line=>{
-    const vals = [];
-    let cur='', inQ=false;
-    for(let ch of line){
-      if(ch==='"'){inQ=!inQ;}
-      else if(ch===',' && !inQ){vals.push(cur.trim());cur='';}
-      else cur+=ch;
-    }
-    vals.push(cur.trim());
-    const obj={};
-    headers.forEach((h,i)=>obj[h]=(vals[i]||'').replace(/^"|"$/g,'').trim());
-    return obj;
-  }).filter(r=>Object.values(r).some(v=>v));
-}
-
-function variantDot(v){
-  const vl = (v||'').toLowerCase();
-  if(vl.includes('illustration')) return 'dot-ir';
-  if(vl.includes('reverse'))      return 'dot-rh';
-  if(vl==='holo')                  return 'dot-h';
-  return 'dot-nh';
-}
-
-function langBadge(l){
-  const jp = (l||'').toUpperCase()==='JP';
-  return `<span class="badge${jp?' badge-jp':''}">${(l||'EN').toUpperCase()}</span>`;
-}
-
-function variantPill(v){
-  return `<span class="vpill"><span class="dot ${variantDot(v)}"></span>${v||'—'}</span>`;
-}
-
-function groupBy(arr, key){
-  const map = new Map();
-  arr.forEach(r=>{
-    const k = r[key]||'Other';
-    if(!map.has(k)) map.set(k,[]);
-    map.get(k).push(r);
-  });
-  return map;
-}
-
-function populateFilters(){
-  const eras = [...new Set([...allCards,...allCameo].map(r=>r.era).filter(Boolean))];
-  const variants = [...new Set(allCards.map(r=>r.variant).filter(Boolean))];
-  const fEra = document.getElementById('fEra');
-  const fVar = document.getElementById('fVariant');
-  eras.forEach(e=>{const o=document.createElement('option');o.value=e;o.textContent=e;fEra.appendChild(o);});
-  variants.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v.toLowerCase();fVar.appendChild(o);});
-}
-
-function updateStats(mainCount, cameoCount, jpCount){
-  document.getElementById('stats').innerHTML=`
-    <div class="stat"><div class="stat-n">${mainCount}</div><div class="stat-l">main cards</div></div>
-    <div class="stat"><div class="stat-n">${jpCount}</div><div class="stat-l">japanese exclusive</div></div>
-    <div class="stat"><div class="stat-n">${cameoCount}</div><div class="stat-l">cameo appearances</div></div>
-    <div class="stat"><div class="stat-n">${mainCount+cameoCount}</div><div class="stat-l">total cards</div></div>
-  `;
-}
-
-function render(){
-  const q       = document.getElementById('search').value.toLowerCase();
-  const fEra    = document.getElementById('fEra').value;
-  const fLang   = document.getElementById('fLang').value;
-  const fVar    = document.getElementById('fVariant').value;
-  const fSec    = document.getElementById('fSection').value;
-
-  const jpCount = allCards.filter(r=>(r.lang||'').toUpperCase()==='JP').length;
-  updateStats(allCards.length, allCameo.length, jpCount);
-
-  let html = '';
-
-  // ── MAIN CARDS ──
-  if(fSec===''||fSec==='main'){
-    let rows = allCards.filter(r=>{
-      if(fEra  && r.era!==fEra)                            return false;
-      if(fLang && (r.lang||'EN').toUpperCase()!==fLang.toUpperCase()) return false;
-      if(fVar  && r.variant!==fVar)                        return false;
-      if(q && !r.name?.toLowerCase().includes(q) && !r.set?.toLowerCase().includes(q)) return false;
-      return true;
-    });
-
-    if(rows.length){
-      const grouped = groupBy(rows,'era');
-      grouped.forEach((cards,era)=>{
-        html+=`<div class="era-block">
-          <div class="era-label">${era}</div>
-          <div class="tbl-wrap"><table>
-            <thead><tr>
-              <th style="width:26%">card name</th>
-              <th style="width:24%">set</th>
-              <th style="width:9%" class="col-num">number</th>
-              <th style="width:16%">variant</th>
-              <th style="width:6%">lang</th>
-              <th>notes</th>
-            </tr></thead><tbody>`;
-        cards.forEach(c=>{
-          html+=`<tr>
-            <td class="nm">${c.name||'—'}</td>
-            <td>${c.set||'—'}<span class="yr">${c.year||''}</span></td>
-            <td class="col-num" style="font-size:11px;">${c.number||'—'}</td>
-            <td>${variantPill(c.variant)}</td>
-            <td>${langBadge(c.lang)}</td>
-            <td class="note-cell">${c.note||''}</td>
-          </tr>`;
-        });
-        html+=`</tbody></table></div></div>`;
-      });
-    }
-  }
-
-  // ── CAMEO ──
-  if(fSec===''||fSec==='cameo'){
-    let rows = allCameo.filter(r=>{
-      if(fLang && (r.lang||'EN').toUpperCase()!==fLang.toUpperCase()) return false;
-      if(q && !r.name?.toLowerCase().includes(q) && !r.set?.toLowerCase().includes(q)) return false;
-      return true;
-    });
-
-    if(rows.length){
-      html+=`<div class="era-block">
-        <div class="era-label">cameo appearances</div>
-        <div class="tbl-wrap"><table>
-          <thead><tr>
-            <th style="width:26%">card name</th>
-            <th style="width:24%">set</th>
-            <th style="width:9%" class="col-num">number</th>
-            <th style="width:6%">lang</th>
-            <th>poliwhirl appears on</th>
-          </tr></thead><tbody>`;
-      rows.forEach(c=>{
-        html+=`<tr>
-          <td class="nm">${c.name||'—'}</td>
-          <td>${c.set||'—'}<span class="yr">${c.year||''}</span></td>
-          <td class="col-num" style="font-size:11px;">${c.number||'—'}</td>
-          <td>${langBadge(c.lang)}</td>
-          <td class="note-cell">${c.cameo_detail||c.note||'—'}</td>
-        </tr>`;
-      });
-      html+=`</tbody></table></div></div>`;
-    }
-  }
-
-  if(!html) html=`<div class="no-results">no cards match your search.</div>`;
-  document.getElementById('output').innerHTML=html;
-}
-
-async function fetchCSV(url){
-  const res = await fetch(url);
-  if(!res.ok) throw new Error(`HTTP ${res.status}`);
-  return parseCSV(await res.text());
-}
-
-async function init(){
-  try{
-    document.getElementById('output').innerHTML='<div class="loading">loading your card list…</div>';
-    const [cards, cameo] = await Promise.all([fetchCSV(CARDS_CSV), fetchCSV(CAMEO_CSV)]);
-    allCards = cards;
-    allCameo = cameo;
-    populateFilters();
-    render();
-  } catch(e){
-    document.getElementById('output').innerHTML=`<div class="no-results">couldn't load the card list right now — please try refreshing.</div>`;
-    console.error(e);
-  }
-}
-
-init();
-</script>
-</body>
-</html>
+td.note-cell{font-size:10

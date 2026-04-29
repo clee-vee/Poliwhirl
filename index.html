@@ -1,75 +1,202 @@
-# Map each card to its pokemontcg.io image URL
-# Format: https://images.pokemontcg.io/{set_id}/{card_number}_hires.png
-# Set IDs from pokemontcg.io
-
-CARDS = [
-  # era, name, set, year, number, variant, lang, note, image_url
-  ("Classic era · 1999–2003","Poliwhirl","Base Set","1999","38/102","Non-Holo","EN","","https://images.pokemontcg.io/base1/38_hires.png"),
-  ("Classic era · 1999–2003","Misty's Poliwhirl","Gym Heroes","2000","53/132","Non-Holo","EN","","https://images.pokemontcg.io/gym1/53_hires.png"),
-  ("Classic era · 1999–2003","Poliwhirl","Neo Discovery","2001","44/75","Non-Holo","EN","","https://images.pokemontcg.io/neo2/44_hires.png"),
-  ("Classic era · 1999–2003","Poliwhirl","Vending Machine Set 1","2001","—","Non-Holo","JP","Japanese exclusive",""),
-  ("Classic era · 1999–2003","Poliwhirl","Expedition Base Set","2002","89/165","Non-Holo","EN","e-Card era","https://images.pokemontcg.io/ecard1/89_hires.png"),
-  ("Classic era · 1999–2003","Poliwhirl","Expedition Base Set","2002","89/165","Reverse Holo","EN","e-Card era","https://images.pokemontcg.io/ecard1/89_hires.png"),
-  ("Classic era · 1999–2003","Poliwhirl","Skyridge","2003","88/144","Non-Holo","EN","e-Card era","https://images.pokemontcg.io/ecard3/88_hires.png"),
-  ("Classic era · 1999–2003","Poliwhirl","Skyridge","2003","88/144","Reverse Holo","EN","e-Card era","https://images.pokemontcg.io/ecard3/88_hires.png"),
-  ("EX era · 2003–2007","Poliwhirl","EX FireRed & LeafGreen","2004","46/112","Non-Holo","EN","","https://images.pokemontcg.io/ex8/46_hires.png"),
-  ("EX era · 2003–2007","Poliwhirl","EX FireRed & LeafGreen","2004","46/112","Reverse Holo","EN","","https://images.pokemontcg.io/ex8/46_hires.png"),
-  ("EX era · 2003–2007","Poliwhirl","EX Unseen Forces","2005","68/115","Non-Holo","EN","","https://images.pokemontcg.io/ex10/68_hires.png"),
-  ("EX era · 2003–2007","Poliwhirl","EX Unseen Forces","2005","68/115","Reverse Holo","EN","","https://images.pokemontcg.io/ex10/68_hires.png"),
-  ("Diamond & Pearl era · 2007–2011","Poliwhirl","Legends Awakened","2008","115/146","Non-Holo","EN","","https://images.pokemontcg.io/dp6/115_hires.png"),
-  ("Diamond & Pearl era · 2007–2011","Poliwhirl","Legends Awakened","2008","115/146","Reverse Holo","EN","","https://images.pokemontcg.io/dp6/115_hires.png"),
-  ("Diamond & Pearl era · 2007–2011","Poliwhirl","HS Unleashed","2010","37/95","Non-Holo","EN","HeartGold & SoulSilver era","https://images.pokemontcg.io/hs2/37_hires.png"),
-  ("Diamond & Pearl era · 2007–2011","Poliwhirl","HS Unleashed","2010","37/95","Reverse Holo","EN","HeartGold & SoulSilver era","https://images.pokemontcg.io/hs2/37_hires.png"),
-  ("XY era · 2013–2016","Poliwhirl","XY Furious Fists","2014","16/111","Non-Holo","EN","","https://images.pokemontcg.io/xy3/16_hires.png"),
-  ("XY era · 2013–2016","Poliwhirl","XY Furious Fists","2014","16/111","Reverse Holo","EN","","https://images.pokemontcg.io/xy3/16_hires.png"),
-  ("XY era · 2013–2016","Poliwhirl","XY Evolutions","2016","24/108","Non-Holo","EN","Base Set artwork callback","https://images.pokemontcg.io/xy12/24_hires.png"),
-  ("XY era · 2013–2016","Poliwhirl","XY Evolutions","2016","24/108","Reverse Holo","EN","Base Set artwork callback","https://images.pokemontcg.io/xy12/24_hires.png"),
-  ("Sun & Moon era · 2017–2019","Poliwhirl","Sun & Moon Base Set","2017","31/149","Non-Holo","EN","","https://images.pokemontcg.io/sm1/31_hires.png"),
-  ("Sun & Moon era · 2017–2019","Poliwhirl","Sun & Moon Base Set","2017","31/149","Reverse Holo","EN","","https://images.pokemontcg.io/sm1/31_hires.png"),
-  ("Sun & Moon era · 2017–2019","Poliwhirl","Unbroken Bonds","2019","38/214","Non-Holo","EN","","https://images.pokemontcg.io/sm10/38_hires.png"),
-  ("Sun & Moon era · 2017–2019","Poliwhirl","Unbroken Bonds","2019","38/214","Reverse Holo","EN","","https://images.pokemontcg.io/sm10/38_hires.png"),
-  ("Sword & Shield era · 2020–2022","Poliwhirl","Lost Origin","2022","31/196","Non-Holo","EN","","https://images.pokemontcg.io/swsh11/31_hires.png"),
-  ("Sword & Shield era · 2020–2022","Poliwhirl","Lost Origin","2022","31/196","Reverse Holo","EN","","https://images.pokemontcg.io/swsh11/31_hires.png"),
-  ("Scarlet & Violet era · 2023–present","Poliwhirl","Scarlet & Violet 151","2023","61/165","Non-Holo","EN","","https://images.pokemontcg.io/sv3pt5/61_hires.png"),
-  ("Scarlet & Violet era · 2023–present","Poliwhirl","Scarlet & Violet 151","2023","61/165","Reverse Holo","EN","","https://images.pokemontcg.io/sv3pt5/61_hires.png"),
-  ("Scarlet & Violet era · 2023–present","Poliwhirl","Scarlet & Violet 151","2023","176/165","Illustration Rare","EN","fan favourite","https://images.pokemontcg.io/sv3pt5/176_hires.png"),
-  ("Scarlet & Violet era · 2023–present","Poliwhirl","Twilight Masquerade","2024","42/167","Non-Holo","EN","","https://images.pokemontcg.io/sv6/42_hires.png"),
-  ("Scarlet & Violet era · 2023–present","Poliwhirl","Twilight Masquerade","2024","42/167","Reverse Holo","EN","","https://images.pokemontcg.io/sv6/42_hires.png"),
-]
-
-CAMEO = [
-  ("Magikarp","Expedition","2002","118","EN","featured in artwork","https://images.pokemontcg.io/ecard1/118_hires.png"),
-  ("Fisherman","Skyridge","2003","125","EN","featured in artwork","https://images.pokemontcg.io/ecard3/125_hires.png"),
-  ("Trade Please!","XY-P Promos","2016","282","JP","featured in artwork",""),
-  ("Sabrina's ESP","Gym Heroes","2000","117","EN","appears on plushie","https://images.pokemontcg.io/gym1/117_hires.png"),
-  ("Quaxwell","Paldea Evolved","2023","207","EN","appears on bottle","https://images.pokemontcg.io/sv2/207_hires.png"),
-  ("Team Rocket's Wobbuffet","SV Promos","2023","203","JP","appears on can",""),
-  ("Firefighter Pikachu","SM-P Promos","2018","209","JP","appears on matoi",""),
-]
-
-# Build JS arrays
-cards_js = "const CARDS = [\n"
-for era,name,set_,year,num,variant,lang,note,img in CARDS:
-    cards_js += f'  {{name:{json_str(name)},set:{json_str(set_)},year:{json_str(year)},number:{json_str(num)},variant:{json_str(variant)},lang:{json_str(lang)},era:{json_str(era)},note:{json_str(note)},img:{json_str(img)}}},\n'
-cards_js += "];"
-
-cameo_js = "const CAMEO = [\n"
-for name,set_,year,num,lang,detail,img in CAMEO:
-    cameo_js += f'  {{name:{json_str(name)},set:{json_str(set_)},year:{json_str(year)},number:{json_str(num)},lang:{json_str(lang)},cameo_detail:{json_str(detail)},img:{json_str(img)}}},\n'
-cameo_js += "];"
-
-import json
-def json_str(s): return json.dumps(s)
-
-cards_js = "const CARDS = [\n"
-for era,name,set_,year,num,variant,lang,note,img in CARDS:
-    cards_js += f'  {{name:{json.dumps(name)},set:{json.dumps(set_)},year:{json.dumps(year)},number:{json.dumps(num)},variant:{json.dumps(variant)},lang:{json.dumps(lang)},era:{json.dumps(era)},note:{json.dumps(note)},img:{json.dumps(img)}}},\n'
-cards_js += "];"
-
-cameo_js = "const CAMEO = [\n"
-for name,set_,year,num,lang,detail,img in CAMEO:
-    cameo_js += f'  {{name:{json.dumps(name)},set:{json.dumps(set_)},year:{json.dumps(year)},number:{json.dumps(num)},lang:{json.dumps(lang)},cameo_detail:{json.dumps(detail)},img:{json.dumps(img)}}},\n'
-cameo_js += "];"
-
-print(cards_js)
-print(cameo_js)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poliwhirl Card Checklist · collecting, softly</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#F8F8F3;--text:#68635D;--accent:#A7B4C2;--muted:#AEACA6;--border:#D4D3C6;--dark:#595C64;--white:#fff;}
+body{background:var(--bg);color:var(--text);font-family:'Raleway',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+.page{max-width:880px;margin:0 auto;padding:40px 24px 80px;}
+.header{text-align:center;padding:36px 0 28px;}
+.title{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:400;line-height:1.1;color:var(--text);}
+.title em{font-style:italic;}
+.handle{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:10px;}
+.tagline{font-size:12px;font-weight:300;color:var(--muted);margin-top:10px;line-height:1.8;}
+.divider{height:0.5px;background:var(--border);margin:24px 0;}
+.stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:24px 0 32px;}
+.stat{background:var(--white);border:0.5px solid var(--border);border-radius:8px;padding:12px 22px;text-align:center;min-width:90px;}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--text);line-height:1;}
+.stat-l{font-size:8px;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;align-items:center;}
+.controls input,.controls select{height:36px;border:0.5px solid var(--border);border-radius:6px;background:var(--white);color:var(--text);font-family:'Raleway',sans-serif;font-size:12px;font-weight:300;padding:0 12px;outline:none;}
+.controls input{flex:1;min-width:180px;}
+.controls input::placeholder{color:var(--muted);}
+.controls select{cursor:pointer;}
+.btn{height:36px;padding:0 16px;border:0.5px solid var(--border);border-radius:6px;background:var(--white);color:var(--text);font-family:'Raleway',sans-serif;font-size:11px;font-weight:400;cursor:pointer;letter-spacing:0.5px;white-space:nowrap;}
+.btn:hover{background:var(--bg);}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px;align-items:center;}
+.leg{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--muted);}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block;flex-shrink:0;}
+.dot-nh{background:var(--border);}.dot-h{background:var(--accent);}.dot-rh{background:var(--muted);}.dot-ir{background:#C4A882;}
+.badge{font-size:9px;letter-spacing:1px;padding:2px 7px;border-radius:20px;border:0.5px solid var(--border);color:var(--muted);}
+.badge-jp{border-color:var(--accent);color:var(--accent);}
+.era-block{margin-bottom:36px;}
+.era-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.era-label::after{content:'';flex:1;height:0.5px;background:var(--border);}
+.tbl-wrap{border:0.5px solid var(--border);border-radius:8px;overflow:hidden;}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+thead th{font-size:8px;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);font-weight:400;padding:8px 12px;text-align:left;background:var(--bg);border-bottom:0.5px solid var(--border);}
+tbody tr{border-bottom:0.5px solid var(--border);}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:rgba(167,180,194,0.06);}
+td{padding:10px 12px;font-size:12px;font-weight:300;color:var(--text);vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+td.nm{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;white-space:normal;}
+td.note-cell{font-size:10px;color:var(--muted);font-style:italic;white-space:normal;}
+.yr{color:var(--muted);font-size:10px;margin-left:4px;}
+.vpill{display:inline-flex;align-items:center;gap:4px;font-size:9px;padding:2px 8px;border-radius:20px;border:0.5px solid var(--border);color:var(--muted);white-space:nowrap;}
+.vpill .dot{width:5px;height:5px;}
+.loading{text-align:center;padding:60px;color:var(--muted);font-size:13px;}
+.no-results{text-align:center;padding:40px;color:var(--muted);font-size:13px;}
+.footer{text-align:center;margin-top:56px;padding-top:24px;border-top:0.5px solid var(--border);}
+.footer p{font-size:10px;color:var(--muted);font-weight:300;line-height:2.2;letter-spacing:0.3px;}
+@media(max-width:600px){.title{font-size:28px;}.col-num,.col-era{display:none;}td,th{padding:8px 8px;}}
+@media print{.controls,.legend,.btn{display:none!important;}.page{padding:0;}.era-block{break-inside:avoid;}body{background:white;}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="title">collecting, <em>softly</em></div>
+    <div class="handle">@collectingsoftly &nbsp;·&nbsp; pokémon &nbsp;·&nbsp; slow living</div>
+    <div class="tagline">A complete reference for every Poliwhirl Pokémon TCG card —<br>updated as new sets release.</div>
+  </div>
+  <div class="divider"></div>
+  <div class="stats" id="stats"></div>
+  <div class="divider"></div>
+  <div class="controls">
+    <input type="text" id="search" placeholder="search by name or set…" oninput="render()">
+    <select id="fEra" onchange="render()"><option value="">all eras</option></select>
+    <select id="fLang" onchange="render()">
+      <option value="">all languages</option>
+      <option value="EN">english</option>
+      <option value="JP">japanese</option>
+    </select>
+    <select id="fVariant" onchange="render()"><option value="">all variants</option></select>
+    <select id="fSection" onchange="render()">
+      <option value="">main cards + cameos</option>
+      <option value="main">main cards only</option>
+      <option value="cameo">cameo appearances only</option>
+    </select>
+    <button class="btn" onclick="window.print()">print · save PDF</button>
+  </div>
+  <div class="legend">
+    <div class="leg"><span class="dot dot-nh"></span>non-holo</div>
+    <div class="leg"><span class="dot dot-h"></span>holo</div>
+    <div class="leg"><span class="dot dot-rh"></span>reverse holo</div>
+    <div class="leg"><span class="dot dot-ir"></span>illustration rare</div>
+    <div class="leg"><span class="badge badge-jp">JP</span>japanese exclusive</div>
+  </div>
+  <div id="output"></div>
+  <div class="footer">
+    <p>collecting, softly &nbsp;·&nbsp; a quiet space for pokémon card collecting<br>
+    where opening a pack is a ritual, not a race.<br>
+    <span style="letter-spacing:2px;font-size:9px;">@collectingsoftly</span></p>
+  </div>
+</div>
+<script>
+const CARDS = [
+  {name:"Poliwhirl",set:"Base Set",year:"1999",number:"38/102",variant:"Non-Holo",lang:"EN",era:"Classic era · 1999–2003",note:""},
+  {name:"Misty's Poliwhirl",set:"Gym Heroes",year:"2000",number:"53/132",variant:"Non-Holo",lang:"EN",era:"Classic era · 1999–2003",note:""},
+  {name:"Poliwhirl",set:"Neo Discovery",year:"2001",number:"44/75",variant:"Non-Holo",lang:"EN",era:"Classic era · 1999–2003",note:""},
+  {name:"Poliwhirl",set:"Vending Machine Set 1",year:"2001",number:"—",variant:"Non-Holo",lang:"JP",era:"Classic era · 1999–2003",note:"Japanese exclusive"},
+  {name:"Poliwhirl",set:"Expedition Base Set",year:"2002",number:"89/165",variant:"Non-Holo",lang:"EN",era:"Classic era · 1999–2003",note:"e-Card era"},
+  {name:"Poliwhirl",set:"Expedition Base Set",year:"2002",number:"89/165",variant:"Reverse Holo",lang:"EN",era:"Classic era · 1999–2003",note:"e-Card era"},
+  {name:"Poliwhirl",set:"Skyridge",year:"2003",number:"88/144",variant:"Non-Holo",lang:"EN",era:"Classic era · 1999–2003",note:"e-Card era"},
+  {name:"Poliwhirl",set:"Skyridge",year:"2003",number:"88/144",variant:"Reverse Holo",lang:"EN",era:"Classic era · 1999–2003",note:"e-Card era"},
+  {name:"Poliwhirl",set:"EX FireRed & LeafGreen",year:"2004",number:"46/112",variant:"Non-Holo",lang:"EN",era:"EX era · 2003–2007",note:""},
+  {name:"Poliwhirl",set:"EX FireRed & LeafGreen",year:"2004",number:"46/112",variant:"Reverse Holo",lang:"EN",era:"EX era · 2003–2007",note:""},
+  {name:"Poliwhirl",set:"EX Unseen Forces",year:"2005",number:"68/115",variant:"Non-Holo",lang:"EN",era:"EX era · 2003–2007",note:""},
+  {name:"Poliwhirl",set:"EX Unseen Forces",year:"2005",number:"68/115",variant:"Reverse Holo",lang:"EN",era:"EX era · 2003–2007",note:""},
+  {name:"Poliwhirl",set:"Legends Awakened",year:"2008",number:"115/146",variant:"Non-Holo",lang:"EN",era:"Diamond & Pearl era · 2007–2011",note:""},
+  {name:"Poliwhirl",set:"Legends Awakened",year:"2008",number:"115/146",variant:"Reverse Holo",lang:"EN",era:"Diamond & Pearl era · 2007–2011",note:""},
+  {name:"Poliwhirl",set:"HS Unleashed",year:"2010",number:"37/95",variant:"Non-Holo",lang:"EN",era:"Diamond & Pearl era · 2007–2011",note:"HeartGold & SoulSilver era"},
+  {name:"Poliwhirl",set:"HS Unleashed",year:"2010",number:"37/95",variant:"Reverse Holo",lang:"EN",era:"Diamond & Pearl era · 2007–2011",note:"HeartGold & SoulSilver era"},
+  {name:"Poliwhirl",set:"XY Furious Fists",year:"2014",number:"16/111",variant:"Non-Holo",lang:"EN",era:"XY era · 2013–2016",note:""},
+  {name:"Poliwhirl",set:"XY Furious Fists",year:"2014",number:"16/111",variant:"Reverse Holo",lang:"EN",era:"XY era · 2013–2016",note:""},
+  {name:"Poliwhirl",set:"XY Evolutions",year:"2016",number:"24/108",variant:"Non-Holo",lang:"EN",era:"XY era · 2013–2016",note:"Base Set artwork callback"},
+  {name:"Poliwhirl",set:"XY Evolutions",year:"2016",number:"24/108",variant:"Reverse Holo",lang:"EN",era:"XY era · 2013–2016",note:"Base Set artwork callback"},
+  {name:"Poliwhirl",set:"Sun & Moon Base Set",year:"2017",number:"31/149",variant:"Non-Holo",lang:"EN",era:"Sun & Moon era · 2017–2019",note:""},
+  {name:"Poliwhirl",set:"Sun & Moon Base Set",year:"2017",number:"31/149",variant:"Reverse Holo",lang:"EN",era:"Sun & Moon era · 2017–2019",note:""},
+  {name:"Poliwhirl",set:"Unbroken Bonds",year:"2019",number:"38/214",variant:"Non-Holo",lang:"EN",era:"Sun & Moon era · 2017–2019",note:""},
+  {name:"Poliwhirl",set:"Unbroken Bonds",year:"2019",number:"38/214",variant:"Reverse Holo",lang:"EN",era:"Sun & Moon era · 2017–2019",note:""},
+  {name:"Poliwhirl",set:"Lost Origin",year:"2022",number:"31/196",variant:"Non-Holo",lang:"EN",era:"Sword & Shield era · 2020–2022",note:""},
+  {name:"Poliwhirl",set:"Lost Origin",year:"2022",number:"31/196",variant:"Reverse Holo",lang:"EN",era:"Sword & Shield era · 2020–2022",note:""},
+  {name:"Poliwhirl",set:"Scarlet & Violet 151",year:"2023",number:"61/165",variant:"Non-Holo",lang:"EN",era:"Scarlet & Violet era · 2023–present",note:""},
+  {name:"Poliwhirl",set:"Scarlet & Violet 151",year:"2023",number:"61/165",variant:"Reverse Holo",lang:"EN",era:"Scarlet & Violet era · 2023–present",note:""},
+  {name:"Poliwhirl",set:"Scarlet & Violet 151",year:"2023",number:"176/165",variant:"Illustration Rare",lang:"EN",era:"Scarlet & Violet era · 2023–present",note:"fan favourite"},
+  {name:"Poliwhirl",set:"Twilight Masquerade",year:"2024",number:"42/167",variant:"Non-Holo",lang:"EN",era:"Scarlet & Violet era · 2023–present",note:""},
+  {name:"Poliwhirl",set:"Twilight Masquerade",year:"2024",number:"42/167",variant:"Reverse Holo",lang:"EN",era:"Scarlet & Violet era · 2023–present",note:""},
+];
+const CAMEO = [
+  {name:"Magikarp",set:"Expedition",year:"2002",number:"118",lang:"EN",cameo_detail:"featured in artwork"},
+  {name:"Fisherman",set:"Skyridge",year:"2003",number:"125",lang:"EN",cameo_detail:"featured in artwork"},
+  {name:"Trade Please!",set:"XY-P Promos",year:"2016",number:"282",lang:"JP",cameo_detail:"featured in artwork"},
+  {name:"Sabrina's ESP",set:"Gym Heroes",year:"2000",number:"117",lang:"EN",cameo_detail:"appears on plushie"},
+  {name:"Quaxwell",set:"Paldea Evolved",year:"2023",number:"207",lang:"EN",cameo_detail:"appears on bottle"},
+  {name:"Team Rocket's Wobbuffet",set:"SV Promos",year:"2023",number:"203",lang:"JP",cameo_detail:"appears on can"},
+  {name:"Firefighter Pikachu",set:"SM-P Promos",year:"2018",number:"209",lang:"JP",cameo_detail:"appears on matoi"},
+];
+let allCards=CARDS, allCameo=CAMEO;
+function variantDot(v){const vl=(v||'').toLowerCase();if(vl.includes('illustration'))return 'dot-ir';if(vl.includes('reverse'))return 'dot-rh';if(vl==='holo')return 'dot-h';return 'dot-nh';}
+function langBadge(l){const jp=(l||'').toUpperCase()==='JP';return `<span class="badge${jp?' badge-jp':''}">${(l||'EN').toUpperCase()}</span>`;}
+function variantPill(v){return `<span class="vpill"><span class="dot ${variantDot(v)}"></span>${v||'—'}</span>`;}
+function groupBy(arr,key){const map=new Map();arr.forEach(r=>{const k=r[key]||'Other';if(!map.has(k))map.set(k,[]);map.get(k).push(r);});return map;}
+function populateFilters(){
+  const eras=[...new Set(allCards.map(r=>r.era).filter(Boolean))];
+  const variants=[...new Set(allCards.map(r=>r.variant).filter(Boolean))];
+  const fEra=document.getElementById('fEra');
+  const fVar=document.getElementById('fVariant');
+  eras.forEach(e=>{const o=document.createElement('option');o.value=e;o.textContent=e;fEra.appendChild(o);});
+  variants.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v.toLowerCase();fVar.appendChild(o);});
+}
+function updateStats(m,c,j){document.getElementById('stats').innerHTML=`<div class="stat"><div class="stat-n">${m}</div><div class="stat-l">main cards</div></div><div class="stat"><div class="stat-n">${j}</div><div class="stat-l">japanese exclusive</div></div><div class="stat"><div class="stat-n">${c}</div><div class="stat-l">cameo appearances</div></div><div class="stat"><div class="stat-n">${m+c}</div><div class="stat-l">total cards</div></div>`;}
+function render(){
+  const q=document.getElementById('search').value.toLowerCase();
+  const fEra=document.getElementById('fEra').value;
+  const fLang=document.getElementById('fLang').value;
+  const fVar=document.getElementById('fVariant').value;
+  const fSec=document.getElementById('fSection').value;
+  const jpCount=allCards.filter(r=>(r.lang||'').toUpperCase()==='JP').length;
+  updateStats(allCards.length,allCameo.length,jpCount);
+  let html='';
+  if(fSec===''||fSec==='main'){
+    let rows=allCards.filter(r=>{
+      if(fEra&&r.era!==fEra)return false;
+      if(fLang&&(r.lang||'').toUpperCase()!==fLang.toUpperCase())return false;
+      if(fVar&&r.variant!==fVar)return false;
+      if(q&&!r.name?.toLowerCase().includes(q)&&!r.set?.toLowerCase().includes(q))return false;
+      return true;
+    });
+    if(rows.length){
+      const grouped=groupBy(rows,'era');
+      grouped.forEach((cards,era)=>{
+        html+=`<div class="era-block"><div class="era-label">${era}</div><div class="tbl-wrap"><table><thead><tr><th style="width:26%">card name</th><th style="width:24%">set</th><th style="width:9%" class="col-num">number</th><th style="width:16%">variant</th><th style="width:6%">lang</th><th>notes</th></tr></thead><tbody>`;
+        cards.forEach(c=>{html+=`<tr><td class="nm">${c.name||'—'}</td><td>${c.set||'—'}<span class="yr">${c.year||''}</span></td><td class="col-num" style="font-size:11px;">${c.number||'—'}</td><td>${variantPill(c.variant)}</td><td>${langBadge(c.lang)}</td><td class="note-cell">${c.note||''}</td></tr>`;});
+        html+=`</tbody></table></div></div>`;
+      });
+    }
+  }
+  if(fSec===''||fSec==='cameo'){
+    let rows=allCameo.filter(r=>{
+      if(fLang&&(r.lang||'').toUpperCase()!==fLang.toUpperCase())return false;
+      if(q&&!r.name?.toLowerCase().includes(q)&&!r.set?.toLowerCase().includes(q))return false;
+      return true;
+    });
+    if(rows.length){
+      html+=`<div class="era-block"><div class="era-label">cameo appearances</div><div class="tbl-wrap"><table><thead><tr><th style="width:26%">card name</th><th style="width:24%">set</th><th style="width:9%" class="col-num">number</th><th style="width:6%">lang</th><th>poliwhirl appears on</th></tr></thead><tbody>`;
+      rows.forEach(c=>{html+=`<tr><td class="nm">${c.name||'—'}</td><td>${c.set||'—'}<span class="yr">${c.year||''}</span></td><td class="col-num" style="font-size:11px;">${c.number||'—'}</td><td>${langBadge(c.lang)}</td><td class="note-cell">${c.cameo_detail||'—'}</td></tr>`;});
+      html+=`</tbody></table></div></div>`;
+    }
+  }
+  if(!html)html=`<div class="no-results">no cards match your search.</div>`;
+  document.getElementById('output').innerHTML=html;
+}
+populateFilters();
+render();
+</script>
+</body>
+</html>
